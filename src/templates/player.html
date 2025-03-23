@@ -77,36 +77,12 @@
             </button>
          </div>
       </div>
-      <script>
-         document.addEventListener('DOMContentLoaded', () => {
-           const splash = document.getElementById('splashOverlay');
-           const initBtn = document.getElementById('initButton');
-           const video = document.getElementById('player');
-         
-           // Se já interagiu antes, inicia direto com áudio
-         
-           // Configura o modal de início
-           video.muted = true; // Força mudo inicial
-           splash.style.display = 'flex';
-         
-           // Handler do botão "Iniciar"
-           initBtn.addEventListener('click', () => {
-             splash.style.display = 'none';             
-             // Habilita áudio e tenta play
-             video.muted = false;
-             video.play()
-               .catch(() => {
-                 video.controls = true; // Fallback seguro
-               });
-           });
-         });
-      </script>
       <header class="mdl-layout__header">
          <div class="mdl-layout__header-row">
             <button class="mdl-button mdl-js-button mdl-button--icon mdl-layout__drawer-button">
             <i class="material-icons">menu</i>
             </button>
-            <span class="mdl-layout-title">MDL Video Platform</span>
+            <span class="mdl-layout-title">MDL Video Platform - New</span>
             <div class="mdl-layout-spacer"></div>
             <nav class="mdl-navigation">
                <button id="menu" class="mdl-button mdl-js-button mdl-button--icon">
@@ -156,23 +132,7 @@
                         style="width: 100%; height: auto;">
                         <source src="{{VIDEO_PATH}}" type="video/mp4" />
                      </video>
-                     <script>
-                        document.addEventListener('DOMContentLoaded', () => {
-  const video = document.getElementById('player');
-  
-  // Tenta autoplay mudo
-  video.play().catch(() => {
-    video.controls = true;
-  });
-
-  // Habilita áudio no primeiro clique
-  document.body.addEventListener('click', () => {
-    if(video.muted) {
-      video.muted = false;
-    }
-  }, { once: true });
-});
-                     </script>
+                 
                   </div>
                </div>
                <!-- Fim do vídeo principal -->
@@ -209,5 +169,47 @@
       </main>
       <!-- Scripts MDL -->
       <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+      <!-- video.js -->
+       <script>
+         document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('player');
+    
+    // Tenta autoplay mudo
+    video.play().catch(() => {
+      video.controls = true;
+    });
+  
+    // Habilita áudio no primeiro clique
+    document.body.addEventListener('click', () => {
+      if(video.muted) {
+        video.muted = false;
+      }
+    }, { once: true });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const splash = document.getElementById('splashOverlay');
+    const initBtn = document.getElementById('initButton');
+    const video = document.getElementById('player');
+  
+    // Se já interagiu antes, inicia direto com áudio
+  
+    // Configura o modal de início
+    video.muted = true; // Força mudo inicial
+    splash.style.display = 'flex';
+  
+    // Handler do botão "Iniciar"
+    initBtn.addEventListener('click', () => {
+      splash.style.display = 'none';             
+      // Habilita áudio e tenta play
+      video.muted = false;
+      video.play()
+        .catch(() => {
+          video.controls = true; // Fallback seguro
+        });
+    });
+  });
+       </script>
    </body>
 </html>
