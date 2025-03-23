@@ -84,12 +84,6 @@
            const video = document.getElementById('player');
          
            // Se já interagiu antes, inicia direto com áudio
-           if(localStorage.getItem('userActivated') === 'true') {
-             splash.style.display = 'none';
-             video.muted = false;
-             video.play().catch(() => video.controls = true);
-             return;
-           }
          
            // Configura o modal de início
            video.muted = true; // Força mudo inicial
@@ -97,9 +91,7 @@
          
            // Handler do botão "Iniciar"
            initBtn.addEventListener('click', () => {
-             splash.style.display = 'none';
-             localStorage.setItem('userActivated', 'true');
-             
+             splash.style.display = 'none';             
              // Habilita áudio e tenta play
              video.muted = false;
              video.play()
